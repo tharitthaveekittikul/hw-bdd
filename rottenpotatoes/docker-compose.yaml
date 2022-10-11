@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  hw-bdd: # service name
+    build:
+      context: . # path docker file
+      dockerfile: Dockerfile
+    volumes: # bind mount
+      - .:/softeng/hw-bdd
+    stdin_open: true #-i
+    tty: true # -
+    container_name: hw-bdd #container name
+  rails-web:
+    build: 
+      context: .
+      dockerfile: Dockerfile-web
+    container_name: rails-webs
+    ports:
+      - 3000:3000
